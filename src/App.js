@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import { useState } from "react";
+import Note from "./components/Note";
+import DisplayNotes from "./components/DisplayNotes"
 
-function App() {
+
+export default function App() {
+  const [notes, setNotes] = useState([]);
+
+  const getNotes = (title,body,createDate,dueDate,priority) => {
+    setNotes([...notes, {title:title,body:body,createDate:createDate,dueDate:dueDate,priority:priority}]);
+  }
+
+  //console.log(notes)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <Note getNotes = {getNotes}/>
+        <DisplayNotes/>
+      </div>
     </div>
   );
 }
-
-export default App;
