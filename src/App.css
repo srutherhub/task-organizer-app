@@ -1,4 +1,53 @@
-.flex-column{
-  display:flex;
+:root{
+  --primary: rgb(132, 137, 173);
+}
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
+
+.App {
+  display: flex;
+  gap: 20px;
+}
+
+.note{
+  width: 25%;
+  background-color: var(--primary);
+  height: 100vh;
+}
+
+.inputsContainer{
+  display: flex;
   flex-direction: column;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.inputsContainer2{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.inputsContainer textarea{
+  height: 200px;
+}
+
+.note-header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.noteSaveButton{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.inputFields{
+  padding: 20px;
 }
