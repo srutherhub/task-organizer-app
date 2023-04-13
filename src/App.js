@@ -3,6 +3,14 @@ import React from "react";
 import { useState } from "react";
 import Note from "./components/Note";
 import DisplayNotes from "./components/DisplayNotes";
+import { Box } from "@chakra-ui/react";
+import {
+  white,
+  coolgrey,
+  warmgrey,
+  blue,
+  blackblue,
+} from "./components/color.js";
 
 export default function App() {
   const [notes, setNotes] = useState([]);
@@ -32,9 +40,9 @@ export default function App() {
 
   return (
     <div className="App">
-      <div className="note">
+      <Box borderRight="1px" borderColor={warmgrey} className="note">
         <Note getNotes={getNotes} />
-      </div>
+      </Box>
       <div className="displayNotes">
         <DisplayNotes notes={notes} />
       </div>

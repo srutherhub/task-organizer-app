@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import { Input, Textarea, Select, Button, Text, Box } from "@chakra-ui/react";
+import { white, coolgrey, warmgrey, blue, blackblue } from "./color.js";
 
 export default function Note(props) {
   const { getNotes } = props;
@@ -9,39 +11,44 @@ export default function Note(props) {
   const [dueDate, setDueDate] = useState("");
   const [priority, setPriority] = useState(1);
 
+  const inputBorderColor = warmgrey;
+
   //console.log(createDate);
   return (
     <div className="inputFields">
       <div className="note-header">
-        <h3>Create Note</h3>
-        <p>
+        <Text fontSize="xl">Create Note</Text>
+        <Text Text fontSize="xl">
           {new Intl.DateTimeFormat("en-US", {
             day: "numeric",
             month: "long",
             year: "numeric",
           }).format(new Date(createDate))}
-        </p>
+        </Text>
       </div>
 
       <form onSubmit={(e) => e.preventDefault()}>
         <div className="inputsContainer">
-          <label htmlFor="note-title">Title</label>
-          <input
+          <Text htmlFor="note-title">Task</Text>
+          <Input
             type="text"
             name="title"
             id="note-title"
+            borderColor={inputBorderColor}
             // placeholder="Title"
+            size="lg"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         <div className="inputsContainer">
-          <label htmlFor="note-title">Body</label>
-          <textarea
+          <Text htmlFor="note-title">Body</Text>
+          <Textarea
             type="text"
             name="body"
             id="note-body"
             // placeholder="Body"
+            borderColor={inputBorderColor}
             value={body}
             style={{ resize: "none" }}
             onChange={(e) => setBody(e.target.value)}
@@ -49,11 +56,12 @@ export default function Note(props) {
         </div>
         <div className="inputsContainer2">
           <div className="inputsContainer">
-            <label htmlFor="note-priority">Priority Level</label>
-            <select
+            <Text htmlFor="note-priority">Priority Level</Text>
+            <Select
               type="number"
               value={priority}
               id="note-priority"
+              borderColor={inputBorderColor}
               onChange={(e) => setPriority(e.target.value)}
             >
               <option value={5}>Critical</option>
@@ -61,21 +69,25 @@ export default function Note(props) {
               <option value={3}>Moderate</option>
               <option value={2}>Low</option>
               <option value={1}>Optional</option>
-            </select>
+            </Select>
           </div>
           <div className="inputsContainer">
-            <label htmlFor="note-due-date">Due Date</label>
-            <input
+            <Text htmlFor="note-due-date">Due Date</Text>
+            <Input
               type="date"
               id="note-due-date"
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
+              borderColor={inputBorderColor}
             />
           </div>
         </div>
         <div className="noteSaveButton">
-          <button
+          <Button
             id="note-save"
+            borderColor={inputBorderColor}
+            color={white}
+            bgColor={blue}
             onClick={() => {
               getNotes(title, body, createDate, dueDate, priority, false);
               setTitle("");
@@ -84,8 +96,8 @@ export default function Note(props) {
               setPriority(1);
             }}
           >
-            Save
-          </button>
+            Add
+          </Button>
         </div>
       </form>
     </div>

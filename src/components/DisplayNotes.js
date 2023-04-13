@@ -1,5 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { Input, Textarea, Select, Button, Text, Box } from "@chakra-ui/react";
+import { white, coolgrey, warmgrey, blue, blackblue } from "./color.js";
 
 export default function DisplayNotes(props) {
   const { notes } = props;
@@ -50,9 +52,9 @@ export default function DisplayNotes(props) {
   const displayNote = notesState.map((item, index) => {
     return (
       <div key={index}>
-        <div>
+        <Text>
           {item.dueDate === "" ? (
-            <br/>
+            <br />
           ) : edit[index] ? (
             new Intl.DateTimeFormat("en-US", {
               day: "numeric",
@@ -60,7 +62,7 @@ export default function DisplayNotes(props) {
             }).format(new Date(formatDueDate(item.dueDate)))
           ) : (
             <div>
-              <input
+              <Input
                 type="date"
                 id="note-due-date"
                 value={item.dueDate}
@@ -69,15 +71,15 @@ export default function DisplayNotes(props) {
               />
             </div>
           )}
-          <div>
+          <Text>
             {new Intl.DateTimeFormat("en-US", {
               day: "numeric",
               month: "long",
             }).format(item.createDate)}
-          </div>
-        </div>
+          </Text>
+        </Text>
         <div>
-          <input
+          <Input
             type="text"
             name="title"
             value={item.title}
@@ -86,29 +88,33 @@ export default function DisplayNotes(props) {
           />
         </div>
         <div>
-          <textarea
+          <Textarea
             type="text"
             name="body"
             value={item.body}
-            style={{resize:"none"}}
+            style={{ resize: "none" }}
             readOnly={edit[index]}
             onChange={(e) => handleBodyChange(e, index)}
           />
         </div>
         <div>
-          <input
+          <Select
             type="number"
             value={item.priority}
             id="note-priority"
-            min="1"
-            max="5"
             readOnly={edit[index]}
             onChange={(e) => handlePriorityChange(e, index)}
-          />
+          >
+            <option value={5}>Critical</option>
+            <option value={4}>Vital</option>
+            <option value={3}>Moderate</option>
+            <option value={2}>Low</option>
+            <option value={1}>Optional</option>
+          </Select>
         </div>
-        <button onClick={() => handleEdit(index)}>
+        <Button onClick={() => handleEdit(index)}>
           {edit[index] ? "Edit" : "Save"}
-        </button>
+        </Button>
       </div>
     );
   });
