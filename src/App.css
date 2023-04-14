@@ -14,7 +14,7 @@ body {
 
 .App {
   display: flex;
-  gap: 20px;
+  gap: 1vw;
   background-color: var(--white);
 }
 

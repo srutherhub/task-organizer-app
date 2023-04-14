@@ -85,7 +85,14 @@ export default function Note(props) {
         <div className="noteSaveButton">
           <Button
             id="note-save"
-            borderColor={inputBorderColor}
+            border="1px"
+            borderColor={blue}
+            _hover={{
+              background: white,
+              color: blue,
+              border:"1px",
+              borderColor: blue,
+            }}
             color={white}
             bgColor={blue}
             onClick={() => {
