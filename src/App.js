@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import Note from "./components/Note";
 import DisplayNotes from "./components/DisplayNotes";
+import Sort from "./components/Sort";
 import { Box } from "@chakra-ui/react";
 import {
   white,
@@ -43,9 +44,10 @@ export default function App() {
       <Box borderRight="1px" borderColor={warmgrey} className="note">
         <Note getNotes={getNotes} />
       </Box>
-      <div className="displayNotes">
+      <Box className="displayNotes">
+        <Sort notes={notes} setNotes={setNotes} />
         <DisplayNotes notes={notes} />
-      </div>
+      </Box>
     </div>
   );
 }

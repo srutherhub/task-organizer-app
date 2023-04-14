@@ -195,7 +195,7 @@ export default function DisplayNotes(props) {
     <div
       style={{
         overflow: "scroll",
-        height: "100vh",
+        height: "90vh",
         display: "grid",
         gridTemplateColumns: "37vw 37vw ",
         justifyItems: "center",
